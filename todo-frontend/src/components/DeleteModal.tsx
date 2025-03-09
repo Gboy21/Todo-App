@@ -1,5 +1,6 @@
 import { Dialog } from "@headlessui/react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient, MutationFunction } from "@tanstack/react-query";
+
 
 
 interface DeleteModalProps {

@@ -1,18 +1,18 @@
 import { Dialog } from "@headlessui/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteTask } from "../services/api";
+
 
 interface DeleteModalProps {
   isOpen: boolean;
   close: () => void;
-  onConfirm: () => void;
+  onConfirm: () => Promise<void>; 
 }
 
 const DeleteModal = ({ isOpen, close, onConfirm }: DeleteModalProps) => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: onConfirm,
+    mutationFn: onConfirm as MutationFunction<void, void>,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["tasks"] });
       close();

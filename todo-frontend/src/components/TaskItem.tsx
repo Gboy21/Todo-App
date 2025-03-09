@@ -65,10 +65,12 @@ const TaskItem = ({ task }: { task: Task }) => {
       />
       
       <DeleteModal
-        isOpen={isDeleteOpen}
-        close={() => setIsDeleteOpen(false)}
-        onConfirm={() => deleteTask(task.id)}
-      />
+  isOpen={isDeleteOpen}
+  close={() => setIsDeleteOpen(false)}
+  onConfirm={async () => {
+    await deleteTask(task.id);
+  }}
+/>
     </div>
   );
 };

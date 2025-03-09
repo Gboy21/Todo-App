@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { Task } from "../types/task";
+
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
 
@@ -11,9 +13,9 @@ export const fetchTasks = async () => {
   return response.data;
 };
 
-export const createTask = async (task: Omit<Task, 'id' | 'createdAt'>) => {
-  const response = await api.post('/', task);
-  return response.data;
+export const createTask = async (task: Omit<Task, "id" | "createdAt">) => {
+    const response = await api.post('/', task);
+    return response.data;
 };
 
 export const updateTask = async (id: number, task: Partial<Task>) => {
